@@ -1,26 +1,73 @@
+# 📊 Gold Price Forecasting using RNN
 
-Context
-Gold, the lustrous yellow metal, has captivated humanity for centuries, serving purposes ranging from adorning jewelry to functioning as an investment asset. Like other metals, gold is actively traded on commodities indexes worldwide. In our pursuit of understanding time series analysis in practical settings, we delve into historical gold price data to forecast its future value.
+---
 
-Content
-Metals such as gold have been integral to global trade for generations. Gold prices are intricately determined and utilized in daily trading on commodity exchanges, influenced by a myriad of factors. Focusing solely on this daily price-level data, our objective is to forecast the future price of gold.
+## 📄 Project Description  
+This project focuses on forecasting gold prices using a Recurrent Neural Network (RNN) based deep learning model.  
+The dataset contains historical daily gold price data. The goal is to predict future gold prices based on past trends.
 
-Data
-To facilitate our time series forecasting endeavor, I will leverage gold pricing data from Quandl. Quandl stands as a versatile platform hosting a wealth of financial, economic, and alternative datasets. Accessing publicly shared datasets on Quandl can be accomplished using libraries such as pandas-datareader and quandl (Quandl's native library). The following code snippet presents a succinct one-liner to acquire gold pricing information dating back to the 1970s:
+---
 
-python
-نسخ الكود
-import quandl
-gold_df = quandl.get("BUNDESBANK/BBK01_WT5511")
-The time series data comprises a single variable with date and time features.
+## 🗂 Dataset  
+The dataset contains gold price data with multiple features. For this project, the main feature used is the **closing price**.
 
-Starter Kernel(s)
+- **Source**: [Kaggle – Gold Price Data](https://www.kaggle.com/datasets/sid321axn/gold-price-data)  
+- **File Name**: `gold_price_data.csv`  
+- **Preprocessing Steps**:
+  - Convert the `Date` column to datetime format.
+  - Set `Date` as index.
+  - Normalize data using `MinMaxScaler`.
+  - Create time windows of 20 days to predict the next day.
 
-Start with Fundamentals: TSA & Box-Jenkins Methods
-This notebook serves as an introductory exploration into TSA and traditional forecasting methods.
+---
 
-Acknowledgements
-For this dataset and associated tasks, my reliance is on Quandl. Renowned as the premier source for financial, economic, and alternative datasets, Quandl serves investment professionals worldwide. Its platform is trusted by over 400,000 individuals, including analysts from leading hedge funds, asset management firms, and investment banks.
+## 🔧 Technologies and Tools Used  
+- Python  
+- Pandas  
+- NumPy  
+- Matplotlib  
+- Scikit-learn  
+- TensorFlow / Keras  
 
-Inspiration
-Forecasting the price of gold.
+---
+
+## ⚙️ Project Workflow
+
+1. **Data Loading**: Load and inspect the dataset from CSV.  
+2. **Datetime Processing**: Convert date strings to datetime objects and set as index.  
+3. **Data Normalization**: Use MinMaxScaler to scale price values between 0 and 1.  
+4. **Window Creation**: Build sequences of 20 days to predict the 21st day price.  
+5. **Train-Test Split**: Use 80% of the data for training, 20% for testing.  
+6. **Model Building**: Sequential model with two `SimpleRNN` layers and a dense output layer.  
+7. **Model Compilation**: Use MSE loss function and Adam optimizer.  
+8. **Training**: Train the model and monitor validation loss.  
+9. **Evaluation**: Predict on test data and calculate MAE and MSE.  
+10. **Visualization**: Plot real vs predicted prices.
+
+---
+
+## 📈 Model Architecture Summary  
+- **SimpleRNN Layer** with 64 units and ReLU activation.  
+- **SimpleRNN Layer** with 32 units.  
+- **Dense Output Layer** with 1 unit for regression.  
+- **Loss Function**: Mean Squared Error (MSE)  
+- **Optimizer**: Adam
+
+---
+
+## 🚀 How to Run  
+
+1. Install required libraries if not already installed:  
+   ```bash
+   pip install pandas numpy matplotlib scikit-learn tensorflow
+
+2. Place the dataset (gold_price_data.csv) in your working directory.
+
+3. Run the Jupyter Notebook:
+forecasting_gold.ipynb
+
+4. The model will be trained, evaluated, and the predictions plotted for comparison.
+
+## 👨‍💻 About the Developer
+This project was developed by Abdulaziz Mohammed Dahan.
+Thank you for checking out this project!
