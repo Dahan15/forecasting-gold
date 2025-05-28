@@ -69,5 +69,5 @@ forecasting_gold.ipynb
 4. The model will be trained, evaluated, and the predictions plotted for comparison.
 
 ## 👨‍💻 About the Developer
-This project was developed by Abdulaziz Mohammed Dahan.
+This project was developed by Abdulaziz M. Dahan Ahmed.
 Thank you for checking out this project!
